@@ -1,18 +1,17 @@
-# AceBook
+# AceBook Engineering Project
+Group engineering project, working in teams to produce a social media platform using Rails.
 
-Fork this repository to `acebook-teamname` and customize
-the below**
+[Read our project log here.](https://hackmd.io/s/B1HxGw2Em#)
 
-[You can find the engineering project outline here.](https://github.com/makersacademy/course/tree/master/engineering_projects/rails)
+## Learning Objectives
+* Understand the Rails MVC architecture.
+* Implement features using a two-day sprint cycle.
+* Record our learning process in HackMD.
+* [Full learning objectives here.](https://github.com/makersacademy/course/blob/master/engineering_projects/rails/learning_objectives.md)
 
-The card wall is here: <please update>
+## Implementation
 
-## How to contribute to this project
-See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## Quickstart
-
-First, clone this repository. Then:
+Clone this repo, then:
 
 ```bash
 > bundle install
@@ -22,3 +21,9 @@ First, clone this repository. Then:
 > bundle exec rspec # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+## Contributors
+* [Ben Luke Smith-Gordon](https://github.com/Ben-893)
+* [Fred H](https://github.com/archmagos)
+* [John Forster](https://github.com/JohnForster)
+* [Layth Al-Qattan](https://github.com/laythq)
+* [Yvonne Tang](https://github.com/YvCodeHong)
