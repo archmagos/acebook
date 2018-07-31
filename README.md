@@ -1,4 +1,6 @@
 # AceBook Engineering Project
+[![Build Status](https://travis-ci.org/archmagos/acebook-nice-team.svg?branch=master)](https://travis-ci.org/archmagos/acebook-nice-team) [![Maintainability](https://api.codeclimate.com/v1/badges/04367eb735c458e093af/maintainability)](https://codeclimate.com/github/archmagos/acebook-nice-team/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/04367eb735c458e093af/test_coverage)](https://codeclimate.com/github/archmagos/acebook-nice-team/test_coverage)
+
 Group engineering project, working in teams to produce a social media platform using Rails.
 
 [Read our project log here.](https://hackmd.io/s/B1HxGw2Em#)
