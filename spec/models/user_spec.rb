@@ -49,4 +49,21 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
     end
   end
+
+  describe 'password' do
+    it 'should be present' do
+      @user.password = @user.password_confirmation = " " * 6
+      expect(@user).to_not be_valid
+    end
+
+    it 'should have minimum length of 8' do
+      @user.password = @user.password_confirmation = "1234567"
+      expect(@user).to_not be_valid
+    end
+
+    it 'should have maximum length of 20' do
+      @user.password = @user.password_confirmation = "123456789123456789123"
+      expect(@user).to_not be_valid
+    end
+  end
 end
