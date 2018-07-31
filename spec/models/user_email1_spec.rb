@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before(:each) do
     @user = User.new(
-                    name:'John',
-                    email: 'j_forster@hotmail.co.uk',
-                    password: 'password',
-                    password_confirmation: 'password'
-                    )
+      name: 'John',
+      email: 'j_forster@hotmail.co.uk',
+      password: 'password',
+      password_confirmation: 'password'
+    )
   end
 
   describe 'email address' do
