@@ -1,4 +1,11 @@
 #messageBox {
-    width: 8.5em; overflow-wrap: break-word; 
-    
-  }
+    width: 8.5em; 
+    overflow-wrap: break-word;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#time {
+  font-size: 12px;
+}
