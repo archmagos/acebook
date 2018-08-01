@@ -4,8 +4,24 @@
     <p id="messageBox"><%= post.message %></p>
   </div>
 
-  <p><%= post.created_at.strftime("%m-%e-%y %H:%M") %></p>
+  <p id="time"><%= post.created_at.strftime("%m-%e-%y, %H:%M") %></p>
 
+<% post.comments.each do |comment| %>
+<p><%= comment.body %></p>
+<% end %>
+
+<div>
+      <h2>Add Comment</h2>
+      <%= form_for([post, post.comments.build]) do |f| %>
+        <p>
+          <%= f.label :body %><br>
+          <%= f.text_area :body %>
+        </p>
+        <p>
+          <%= f.submit "Create Comment" %>
+        </p>
+      <% end %>
+    </div>
 <% end %>
 
 <%= link_to new_post_path do %>
