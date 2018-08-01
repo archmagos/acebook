@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     # as defined in private method below...
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       # equivalent to "redirect_to user_url (@user)"
       redirect_to @user
     else
