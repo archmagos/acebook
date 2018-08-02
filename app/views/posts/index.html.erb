@@ -1,8 +1,12 @@
+<%= link_to new_post_path do %>
+  New post
+<% end %>
+
 <% @posts.each do |post| %>
 
-  <div>
+<div>
     <p id="messageBox"><%= post.message %></p>
-  </div>
+</div>
 
   <p id="time">Created at <%= post.created_at.strftime("%e-%m-%y %H:%M") %> by <%= post.poster_name %><br><br>
 
@@ -11,19 +15,17 @@
 <% end %>
 
 <div>
-      <h2>Add Comment</h2>
-      <%= form_for([post, post.comments.build]) do |f| %>
-        <p>
-          <%= f.label :body %><br>
-          <%= f.text_area :body %>
-        </p>
-        <p>
-          <%= f.submit "Create Comment" %>
-        </p>
-      <% end %>
-    </div>
+  <%= form_for([post, post.comments.build]) do |f| %>
+    <p><%= f.text_field :body %></p>
+    <p><%= f.submit "Create Comment" %></p>
+  <% end %>
+</div>
+
+<% post.comments.each do |comment| %>
+  <% if comment.body %>
+    <p id="messageBox2"><%= comment.body %></p>
+    <p id="time"><%= comment.created_at.strftime("%m-%e-%y, %H:%M") %></p>
+    <% end %>
+  <% end %>
 <% end %>
 
-<%= link_to new_post_path do %>
-  New post
-<% end %>

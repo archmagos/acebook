@@ -6,6 +6,12 @@
     font-style: italic;
 }
 
+#messageBox2 {
+  width: 8.5em; 
+  overflow-wrap: break-word;
+  font-size: 18px;
+}
+
 #time {
-  font-size: 12px;
+  font-size: 10px;
 }
