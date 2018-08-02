@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   before(:each) do
     @user = User.new(
       name: 'John',
-      email: 'j_forster@hotmail.co.uk',
+      email: 'john@john.co.uk',
       password: 'password',
       password_confirmation: 'password'
     )
