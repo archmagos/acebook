@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Comment Controller
 
 class CommentsController < ApplicationController
