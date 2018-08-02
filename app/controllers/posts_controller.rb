@@ -2,18 +2,17 @@
 
 # No comment
 class PostsController < ApplicationController
-
-def new
-    @post = Post.new
+  def new
+  @post = Post.new
 end
 
 def create
-    @post = Post.create(post_params)
-    redirect_to posts_url
+  @post = Post.create(post_params)
+  redirect_to posts_url
 end
 
 def index
-    @posts = Post.all.order('created_at DESC')
+  @posts = Post.all.order('created_at DESC')
 end
 
   private
