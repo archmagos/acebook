@@ -9,6 +9,10 @@ RSpec.describe Like, type: :model do
   end
 
   describe 'like validation' do
+    it 'validates unique like on create' do
+      Like.create(user_id: @userid, post_id: @postid)
+      should validate_uniqueness_of(:user_id).scoped_to(:post_id)
+    end
     it 'returns true if user/post like combination already exists in database' do
       Like.create(user_id: @userid, post_id: @postid)
       expect(Like.exists?(user_id: @userid, post_id: @postid)).to eq true

@@ -6,9 +6,9 @@ class LikesController < ApplicationController
     @like = Like.create(like_params)
   end
 
-  def delete
-
-  end
+  # def delete
+  #
+  # end
 
   private
 
