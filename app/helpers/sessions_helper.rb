@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helper methods for sessions.
 module SessionsHelper
   def log_in(user)
     # uses session method defined by rails - distinct from sessions model.

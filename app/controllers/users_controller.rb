@@ -3,6 +3,7 @@
 # No comment
 class UsersController < ApplicationController
   def show
+    @logged_in = logged_in
     @user = User.find(params[:id])
   end
 
