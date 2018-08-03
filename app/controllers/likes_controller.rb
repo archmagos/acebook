@@ -3,12 +3,12 @@
 # Understands saving and deleting likes
 class LikesController < ApplicationController
   def create
-    @like = Like.create(like_params)
+    Like.create(like_params)
   end
 
-  # def delete
-  #
-  # end
+  def destroy
+    Like.delete(params[:id])
+  end
 
   private
 
