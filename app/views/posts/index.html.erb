@@ -5,6 +5,8 @@
   </div>
 
   <p><%= post.created_at.strftime("%m-%e-%y %H:%M") %></p>
+  <p><%= button_to 'Like',action: 'create', controller: 'likes', post_id: post.id %></p>
+
 
 <% end %>
 
