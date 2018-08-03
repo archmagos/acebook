@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    p params
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       # log_in method pre-defined in SessionsHelper module

@@ -1,10 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  before(:each) do
+    user_password = '1234567890'
+    @controller = SessionsController.new
+    post :create, params: {
+      session: { email: 'john@forster.com', password: user_password }
+    }
+    @controller = PostsController.new
+  end
+
   describe "GET /new " do
     it "responds with 200" do
       get :new
       expect(response).to have_http_status(200)
+    end
+
+    it 'calls Post.new' do
+      expect(Post).to receive(:new)
+      get :new
     end
   end
 
@@ -15,8 +29,8 @@ RSpec.describe PostsController, type: :controller do
     end
 
     it "creates a post" do
+      expect(Post).to receive(:create)
       post :create, params: { post: { message: "Hello, world!" } }
-      expect(Post.find_by(message: "Hello, world!")).to be
     end
   end
 
