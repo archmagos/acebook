@@ -8,6 +8,7 @@ class LikesController < ApplicationController
 
   def destroy
     Like.delete(params[:id])
+    redirect_to posts_url
   end
 
   private
