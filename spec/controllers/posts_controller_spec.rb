@@ -1,20 +1,11 @@
 require 'rails_helper'
+require 'log_in_helper'
 require 'pg'
 
 RSpec.describe PostsController, type: :controller do
   before(:each) do
-    user_password = '1234567890'
-    unless User.find_by(email: 'john@forster.com')
-      User.create(
-        name: 'John', email: 'john@forster.com',
-        password: user_password, password_confirmation: user_password
-      )
-    end
-    @controller = SessionsController.new
-    post :create, params: {
-      session: { email: 'john@forster.com', password: user_password }
-    }
-    @controller = PostsController.new
+    create_user
+    log_in
   end
 
   describe "GET /new " do
