@@ -31,6 +31,7 @@ RSpec.describe LikesController, type: :controller do
       Like.create(user_id: "#{User.all[0].id}", post_id: "#{Post.all[0].id}")
       @likeid = Like.select('id').where(user_id: "#{User.all[0].id}", post_id: "#{Post.all[0].id}").first.id
     end
+
     it "deletes a like from the database" do
       expect { delete :destroy, :params => {:id => @likeid} }.to change(Like, :count).by(-1)
     end
