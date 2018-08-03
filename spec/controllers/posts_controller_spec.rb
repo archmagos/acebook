@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'log_in_helper'
-require 'pg'
 
 RSpec.describe PostsController, type: :controller do
   before(:each) do
