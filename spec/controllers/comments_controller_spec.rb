@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
+  before(:each) do
+    create_user
+    log_in
+  end
   describe "POST /" do
     it "responds with 200" do
       Post.create({message: "Hello, world!", id: 1})

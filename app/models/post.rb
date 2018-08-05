@@ -2,7 +2,6 @@
 
 # No comment
 class Post < ApplicationRecord
-
   has_many :comments
 
   def poster_name
