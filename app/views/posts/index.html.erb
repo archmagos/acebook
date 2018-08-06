@@ -16,20 +16,20 @@
   <% else %>
     # Yvonne's front end here
   <% end %>
-<% end %>
 
-<div>
-  <%= form_for([post, post.comments.build]) do |f| %>
-    <p><%= f.text_field :body %></p>
-    <p><%= f.submit "Create Comment" %></p>
-  <% end %>
-</div>
+  <div>
+    <%= form_for([post, post.comments.build]) do |f| %>
+      <p><%= f.text_field :body %></p>
+      <p><%= f.submit "Create Comment" %></p>
+    <% end %>
+  </div>
 
-<% post.comments.each do |comment| %>
-  <% if comment.body %>
-    <p id="messageBox2"><%= comment.body %></p>
-    <p id="time"><%= comment.created_at.strftime("%e-%m-%y, %H:%M") %> by <%= comment.poster_name %></p>
+  <% post.comments.each do |comment| %>
+    <% if comment.body %>
+      <p id="messageBox2"><%= comment.body %></p>
+      <p id="time"><%= comment.created_at.strftime("%e-%m-%y, %H:%M") %> by <%= comment.poster_name %></p>
     <% end %>
   <% end %>
 <% end %>
+
 
