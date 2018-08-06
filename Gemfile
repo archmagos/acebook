@@ -6,7 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt'
-
+# Tests for common Rails functionality
+gem 'shoulda-matchers', '~> 3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
