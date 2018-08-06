@@ -1,0 +1,10 @@
+{
+  "name": "acebook-nice-team",
+  "scripts": {
+    "postdeploy": "bin/setup"
+  },
+  "env": {},
+  "formation": {},
+  "addons": [],
+  "buildpacks": []
+}
