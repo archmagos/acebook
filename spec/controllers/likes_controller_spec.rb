@@ -8,20 +8,19 @@ RSpec.describe LikesController, type: :controller do
 
   describe "POST #create" do
     it "creates a new like in the database" do
-      post :create, :params => {:like => {:user_id => "#{User.all[0].id}", :post_id => "#{Post.all[0].id}"}}
-      expect(response).to have_http_status(:success)
+      expect { post :create, :params => {:likes => {:user_id => "#{User.all[0].id}", :post_id => "#{Post.all[0].id}"}}}.to change(Like, :count).by(1)
     end
 
     it "throws an error if foreign key user_id does not exist (back-end)" do
-      expect { post :create, :params => {:like => {:user_id => 5, :post_id => 1}} }.to raise_error(ActiveRecord::InvalidForeignKey)
+      expect { post :create, :params => {:likes => {:user_id => 5, :post_id => 1}} }.to raise_error(ActiveRecord::InvalidForeignKey)
     end
 
     it "throws an error if foreign key post_id does not exist (back-end)" do
-      expect { post :create, :params => {:like => {:user_id => 1, :post_id => 5}} }.to raise_error(ActiveRecord::InvalidForeignKey)
+      expect { post :create, :params => {:likes => {:user_id => 1, :post_id => 5}} }.to raise_error(ActiveRecord::InvalidForeignKey)
     end
 
     it "prevents a user from adding likes more than once" do
-      2.times { post :create, :params => {:like => {:user_id => "#{User.all[0].id}", :post_id => "#{Post.all[0].id}"}} }
+      2.times { post :create, :params => {:likes => {:user_id => "#{User.all[0].id}", :post_id => "#{Post.all[0].id}"}} }
       expect(Like.select('id').where(post_id: "#{Post.all[0].id}", user_id: "#{User.all[0].id}").length).to eq 1
     end
   end
