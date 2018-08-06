@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180802154024) do
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -49,5 +50,4 @@ ActiveRecord::Schema.define(version: 20180802154024) do
 
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "users"
 end
