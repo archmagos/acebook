@@ -6,7 +6,7 @@ class Post < ApplicationRecord
     User.find(user_id).name if user_id
   end
 
-  def like_id(post_id)
-    Like.select('id').where(post_id: post_id, user_id: 1).first&.id
+  def like_id(postid, userid)
+    Like.select('id').where(post_id: postid, user_id: userid).first&.id
   end
 end
