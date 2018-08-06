@@ -5,16 +5,18 @@
 <div>
     <p id="messageBox"><%= post.message %></p>
 </div>
-
-  <p id="time">Created at <%= post.created_at.strftime("%e-%m-%y %H:%M") %> by <%= post.poster_name %><br></br>
-  </p>
+    <p id="time">Created at <%= post.created_at.strftime("%e-%m-%y %H:%M") %> by <%= post.poster_name %><br>
+    </p>
 
     <% if post.like_id(post.id, current_user.id) %>
     <%= button_to "delete like", {:controller => :likes,
                                   :action => 'destroy', :id => post.like_id(post.id, current_user.id) },
                                   :method => :delete %>
   <% else %>
-    # Yvonne's front end here
+     <p><%= button_to 'Like', { controller: :likes,
+                                action: 'create',
+                                likes: {post_id: post.id,
+                                user_id: current_user.id }}%></p>
   <% end %>
 
   <div>
