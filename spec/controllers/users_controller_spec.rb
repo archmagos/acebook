@@ -39,4 +39,17 @@ RSpec.describe UsersController, type: :controller do
       assert_template :new
     end
   end
+
+  describe "GET #all" do
+    it "returns a JSON" do
+      get :all
+      expect(response.content_type).to eq("application/json")
+    end
+
+    it "returns all users" do
+      get :all
+      @response = JSON.parse(response.body)
+      expect(@response['name']).to eq('test2')
+    end
+  end
 end

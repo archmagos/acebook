@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def all
+    all = User.all
+    render json: all.first.to_json
+  end
+
   private
 
   def user_params
