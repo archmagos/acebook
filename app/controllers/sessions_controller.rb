@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       # log_in method pre-defined in SessionsHelper module
       log_in user
       # rails converts user to user_url(user)
-      redirect_to user
+      # redirect_to user
     else
       # flash error message telling user to try again...
       render 'new'

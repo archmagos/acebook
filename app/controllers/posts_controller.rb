@@ -8,11 +8,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_url
+    all = Post.all
+    render json: all.last.to_json
   end
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    all = Post.all
+    render json: all.to_json
   end
 
   private

@@ -27,16 +27,6 @@ RSpec.describe UsersController, type: :controller do
       expect(@response['type']).to eq('error')
       expect(@response['message']).to eq('Invalid Submission')
     end
-
-    it 'returns error message as JSON if parameters are incorrect' do
-      post :create, params: { user: { name: 'Layth',
-                                      email: 'invalid_email',
-                                      password: 'password',
-                                      password_confirmation: 'password' } }
-      @response = JSON.parse(response.body)
-      expect(@response['type']).to eq('error')
-      expect(@response['message']).to eq('Invalid Submission')
-    end
   end
 
   describe 'GET #all' do

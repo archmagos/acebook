@@ -2,6 +2,7 @@
 
 # No comment
 class UsersController < ApplicationController
+  # Not sure whether to keep this or not?
   def show
     @logged_in = logged_in
     @user = User.find(params[:id])
@@ -12,13 +13,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    # (conventional) user_params returns appropriate initialization hash,
-    # as defined in private method below...
-
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      # equivalent to "redirect_to user_url (@user)"
       all = User.all
       render json: all.last.to_json
     else
@@ -42,12 +39,4 @@ class UsersController < ApplicationController
     )
   end
 
-  def user_params_permitted?
-    params.require(:user).permit(
-      :name,
-      :email,
-      :password,
-      :password_confirmation
-    ).permitted?
-  end
 end

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # get '/users/new', to: 'users#create'
   post '/users/new', to: 'users#create'
 
+  get '/posts/', to: 'posts#index'
+  post '/posts/new', to: 'posts#create'
+
   # resources :users, :likes
   # resources :posts do
   #   resources :comments
