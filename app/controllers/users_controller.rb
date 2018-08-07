@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       # equivalent to "redirect_to user_url (@user)"
-      redirect_to @user
+      all = User.all
+      render json: all.first.to_json
     else
       render 'new'
     end
