@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'json_helper'
 
 RSpec.describe UsersController, type: :controller do
   before(:each) do
@@ -14,8 +15,7 @@ RSpec.describe UsersController, type: :controller do
                               email: 'email@yahoo.com',
                               password: 'password',
                               password_confirmation: 'password' } }
-      @response = JSON.parse(response.body)
-      expect(@response['name']).to eq('Layth')
+      expect(parsed_response_body['name']).to eq('Layth')
     end
 
     it 'returns error message as JSON if parameters are correct but values invalid' do
@@ -23,9 +23,8 @@ RSpec.describe UsersController, type: :controller do
                                       email: 'invalid_email',
                                       password: 'password',
                                       password_confirmation: 'password' } }
-      @response = JSON.parse(response.body)
-      expect(@response['type']).to eq('error')
-      expect(@response['message']).to eq('Invalid Submission')
+      expect(parsed_response_body['type']).to eq('error')
+      expect(parsed_response_body['message']).to eq('Invalid Submission')
     end
   end
 
@@ -37,8 +36,7 @@ RSpec.describe UsersController, type: :controller do
 
     it 'returns all users' do
       get :all
-      @response = JSON.parse(response.body)
-      expect(@response.last['name']).to eq('test2')
+      expect(parsed_response_body.last['name']).to eq('test2')
     end
   end
 end
