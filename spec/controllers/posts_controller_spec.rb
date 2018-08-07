@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'log_in_helper'
+require 'json_helper'
 
 RSpec.describe PostsController, type: :controller do
   before(:each) do
@@ -11,23 +12,14 @@ RSpec.describe PostsController, type: :controller do
   describe "GET #index" do
     it "returns a list of all posts" do
       get :index
-      @response = JSON.parse(response.body)
-      expect(@response.last['message']).to eq('Makers')
+      expect(parsed_response_body.last['message']).to eq('Makers')
     end
   end
 
   describe "POST #create" do
     it "creates a new post" do
       post :create, params: { post: { message: "Hello, world!" } }
-      @response = JSON.parse(response.body)
-      expect(@response['message']).to eq('Hello, world!')
-    end
-  end
-
-  describe "GET /" do
-    it "responds with 200" do
-      get :index
-      expect(response).to have_http_status(200)
+      expect(parsed_response_body['message']).to eq('Hello, world!')
     end
   end
 end

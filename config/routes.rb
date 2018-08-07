@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   delete  '/logout',  to: 'sessions#destroy'
 
   get '/users', to: 'users#all'
-  # get '/users/new', to: 'users#create'
   post '/users/new', to: 'users#create'
 
   get '/posts/', to: 'posts#index'
   post '/posts/new', to: 'posts#create'
+
+  get '/comments', to: 'comments#all'
+  post '/comments/new', to: 'comments#create'
 
   # resources :users, :likes
   # resources :posts do
