@@ -11,22 +11,31 @@ RSpec.describe UsersController, type: :controller do
   describe 'POST #create' do
     it 'returns updated JSON if submission valid' do
       post :create, params: { user: { name: 'Layth',
-                                      email: 'email@yahoo.com',
-                                      password: 'password',
-                                      password_confirmation: 'password' } }
+                              email: 'email@yahoo.com',
+                              password: 'password',
+                              password_confirmation: 'password' } }
       @response = JSON.parse(response.body)
       expect(@response['name']).to eq('Layth')
     end
 
-    it 'returns error message as JSON' do
+    it 'returns error message as JSON if parameters are correct but values invalid' do
       post :create, params: { user: { name: 'Layth',
                                       email: 'invalid_email',
                                       password: 'password',
                                       password_confirmation: 'password' } }
-      p response
       @response = JSON.parse(response.body)
       expect(@response['type']).to eq('error')
-      expect(@response['message']).to eq('invalid submission')
+      expect(@response['message']).to eq('Invalid Submission')
+    end
+
+    it 'returns error message as JSON if parameters are incorrect' do
+      post :create, params: { user: { name: 'Layth',
+                                      email: 'invalid_email',
+                                      password: 'password',
+                                      password_confirmation: 'password' } }
+      @response = JSON.parse(response.body)
+      expect(@response['type']).to eq('error')
+      expect(@response['message']).to eq('Invalid Submission')
     end
   end
 
@@ -39,7 +48,7 @@ RSpec.describe UsersController, type: :controller do
     it 'returns all users' do
       get :all
       @response = JSON.parse(response.body)
-      expect(@response['name']).to eq('test2')
+      expect(@response.last['name']).to eq('test2')
     end
   end
 end
