@@ -1,14 +1,19 @@
 require 'rails_helper'
+require 'json_helper'
 
 RSpec.describe LikesController, type: :controller do
   before(:each) do
     User.create(name: 'Fred', email: 'fred@email.com', password: 'password')
+    User.create(name: 'Layth', email: 'email@email.com', password: 'password')
     Post.create(message: 'test message')
   end
 
   describe "POST #create" do
-    it "creates a new like in the database" do
-      expect { post :create, :params => {:likes => {:user_id => "#{User.all[0].id}", :post_id => "#{Post.all[0].id}"}}}.to change(Like, :count).by(1)
+    it "updates and returns the total number of likes for a post" do
+      post :create, params: { likes: { user_id: "#{User.all[0].id}",
+                                       post_id: "#{Post.all[0].id}" } }
+      expect(parsed_response_body['post_id']).to eq(("#{Post.all[0].id}").to_i)
+      # find_by only returns one element...
     end
 
     it "throws an error if foreign key user_id does not exist (back-end)" do

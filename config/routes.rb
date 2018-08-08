@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/comments', to: 'comments#all'
   post '/comments/new', to: 'comments#create'
 
+  post '/likes', to: 'likes#create'
+  post '/likes/delete', to: 'likes#destroy'
+
   # resources :users, :likes
   # resources :posts do
   #   resources :comments

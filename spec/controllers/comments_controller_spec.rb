@@ -20,7 +20,7 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "POST #all" do
     it "returns an updated JSON of all comments for a post" do
-      post :create, params: { comment: {body: "Hello, Sun!"}, post_id: 1}
+      post :create, params: { comment: { body: "Hello, Sun!" }, post_id: 1}
       # @response = jsonify
       expect(parsed_response_body['body']).to eq('Hello, Sun!')
     end
