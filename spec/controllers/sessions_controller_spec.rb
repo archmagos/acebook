@@ -1,45 +1,33 @@
 require 'rails_helper'
+require 'json_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  before(:each) do
+    User.create(
+      name: 'John', email: 'john@gmail.com', password: 'strongpassword',
+      password_confirmation: 'strongpassword'
+    )
 
-  describe 'GET /' do
-    it 'returns http success' do
-      get :new
-      expect(response).to have_http_status(:success)
+  end
+
+  describe 'POST #create' do
+    it 'should authenticate the user and return a JSON confirmation' do
+      post :create, params: { email: 'john@gmail.com',
+                              password: 'strongpassword' }
+      expect(parsed_response_body['logged_in']).to eq('true')
+    end
+
+    it 'should not authenticate and return a JSON rejection' do
+      post :create, params: { email: 'john@gmail.com',
+                              password: 'wrongpassword' }
+      expect(parsed_response_body['logged_in']).to eq('false')
     end
   end
 
-  describe 'POST /' do
-    it 'should render login page again if login is invalid' do
-      post :create, params: {
-        session: { email: 'invalid@email.com', password: 'invalid' }
-      }
-      assert_template :new
-    end
-
-    it 'should render the user page if login is valid' do
-      # id = User.create(
-      #   name: 'John', email: 'john@gmail.com', password: 'strongpassword',
-      #   password_confirmation: 'strongpassword'
-      # ).id
-      # post :create, params: {
-      #   session: { email: 'john@gmail.com', password: 'strongpassword' }
-      # }
-      # expect(response).to redirect_to(user_url(id))
-    end
-  end
-
-  describe 'DELETE /' do
-    it 'should logout and display login page' do
-      # id = User.create(
-      #   name: 'John', email: 'john@gmail.com', password: 'strongpassword',
-      #   password_confirmation: 'strongpassword'
-      # ).id
-      # post :create, params: {
-      #   session: { email: 'john@gmail.com', password: 'strongpassword' }
-      # }
-      # delete :destroy
-      # expect(response).to redirect_to(login_url)
+  describe 'DELETE #destroy' do
+    it 'should return JSON confirmation ' do
+      delete :destroy, params: { email: 'john@gmail.com' }
+      expect(parsed_response_body['logged_in']).to eq('false')
     end
   end
 end
