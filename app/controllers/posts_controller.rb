@@ -15,6 +15,10 @@ class PostsController < ApplicationController
     render json: all.to_json
   end
 
+  def test
+    render json: {body: 'Success!'}
+  end
+
   private
 
   def post_params
