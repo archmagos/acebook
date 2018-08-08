@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   post '/comments/new', to: 'comments#create'
 
   post '/likes', to: 'likes#create'
-  post '/likes/delete', to: 'likes#destroy'
+  delete '/likes/delete', to: 'likes#destroy'
+
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
   # resources :users, :likes
   # resources :posts do

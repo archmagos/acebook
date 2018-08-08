@@ -4,13 +4,14 @@
 class LikesController < ApplicationController
   def create
     Like.create(like_params)
-    all = Like.find_by(post_id: params[:likes][:post_id])
+    all = Like.where(post_id: params[:likes][:post_id])
     render json: all.to_json
   end
 
   def destroy
     Like.delete(params[:id])
-    redirect_to posts_url
+    all = Like.where(post_id: params[:post_id])
+    render json: all.to_json
   end
 
   private
