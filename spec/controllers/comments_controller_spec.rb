@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'log_in_helper'
 require 'json_helper'
 
 RSpec.describe CommentsController, type: :controller do

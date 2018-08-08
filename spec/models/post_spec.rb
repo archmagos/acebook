@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it { is_expected.to be }
+  describe 'poster_name' do
+    it 'finds the name of the user who posted the post' do
+      user_1 = User.create({ name: "Ben",
+                    email: "ben-893@hotmail.com",
+                    password: "password",
+                    password_confirmation: "password" })
+      subject.user_id = user_1.id
+      expect(subject.poster_name).to eq "Ben"
+    end
+  end
 end

@@ -2,15 +2,9 @@
 
 # No comment
 class UsersController < ApplicationController
-  # Not sure whether to keep this or not?
-  def show
-    # @logged_in = logged_in
-    # @user = User.find(params[:id])
-  end
+  def show; end
 
-  def new
-    # @user = User.new
-  end
+  def new; end
 
   def create
     @user = User.create(user_params)
@@ -18,7 +12,7 @@ class UsersController < ApplicationController
       all = User.all
       render json: all.last.to_json
     else
-      render json: {type: 'error', message: 'Invalid Submission'}
+      render json: { type: 'error', message: 'Invalid Submission' }
     end
   end
 
