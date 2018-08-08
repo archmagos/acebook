@@ -2,7 +2,6 @@
 
 # Comment Controller
 class CommentsController < ApplicationController
-
   def create
     Comment.create(comment_params)
     all = Comment.where(post_id: params[:comment][:post_id])
