@@ -24,11 +24,4 @@ RSpec.describe PostsController, type: :controller do
       expect(parsed_response_body['message']).to eq('Hello, world!')
     end
   end
-
-  describe ' ' do
-    it ' ' do
-      get :test
-      p parsed_response_body
-    end
-  end
 end
