@@ -2,22 +2,26 @@
 
 # No comment
 class PostsController < ApplicationController
-  def new
-    @post = Post.new
-  end
+  def new; end
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_url
+    all = Post.all
+    render json: all.last.to_json
   end
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    all = Post.all
+    render json: all.to_json
+  end
+
+  def test
+    render json: {body: 'Success!'}
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:message).merge(user_id: current_user.id)
+    params.require(:post).permit(:message, :user_id)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   describe 'poster_name' do
-    it 'find the name of the user who posted the comment' do
+    it 'finds the name of the user who posted the comment' do
       user_1 = User.create({ name: "Ben",
                     email: "ben-893@hotmail.com",
                     password: "password",

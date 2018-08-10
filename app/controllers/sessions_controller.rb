@@ -5,20 +5,16 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      # log_in method pre-defined in SessionsHelper module
-      log_in user
-      # rails converts user to user_url(user)
-      redirect_to user
+    user = User.find_by(email: params[:email].downcase)
+    if user&.authenticate(params[:password])
+      render json: { logged_in: 'true' }
     else
       # flash error message telling user to try again...
-      render 'new'
+      render json: { logged_in: 'false' }
     end
   end
 
   def destroy
-    log_out
-    redirect_to login_url
+    render json: { logged_in: 'false' }
   end
 end
