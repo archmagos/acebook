@@ -15,10 +15,6 @@ class PostsController < ApplicationController
     render json: all_posts_with_user_names.to_json
   end
 
-  def test
-    render json: {body: 'Success!'}
-  end
-
   private
 
   def all_posts_with_user_names
