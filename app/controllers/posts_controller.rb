@@ -8,13 +8,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    all = Post.all
-    render json: all.last.to_json
+    render json: all_posts_with_user_names.last.to_json
   end
 
   def index
-    all = Post.all
-    render json: all.to_json
+    render json: all_posts_with_user_names.to_json
   end
 
   def test
@@ -22,6 +20,13 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def all_posts_with_user_names
+    Post.all.as_json.map do |post|
+      user = User.find_by_id(post['user_id'])
+      post.merge('user_name' => user['name'])
+    end
+  end
 
   def post_params
     params.require(:post).permit(:message, :user_id)
