@@ -11,8 +11,21 @@ module Acebook
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    # config.action_dispatch.default_headers = {
+    #   'Access-Control-Allow-Origin' => '*',
+    #   'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+    # }
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+

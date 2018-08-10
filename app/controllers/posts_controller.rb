@@ -2,22 +2,29 @@
 
 # No comment
 class PostsController < ApplicationController
-  def new
-    @post = Post.new
-  end
+  skip_before_action :verify_authenticity_token
+
+  def new; end
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_url
+    render json: all_posts_with_user_names.last.to_json
   end
 
   def index
-    @posts = Post.all.order('created_at DESC')
+    render json: all_posts_with_user_names.to_json
   end
 
   private
 
+  def all_posts_with_user_names
+    Post.all.as_json.map do |post|
+      user = User.find_by_id(post['user_id'])
+      post.merge('user_name' => user['name'])
+    end
+  end
+
   def post_params
-    params.require(:post).permit(:message).merge(user_id: current_user.id)
+    params.require(:post).permit(:message, :user_id)
   end
 end

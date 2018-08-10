@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   end
 
   def like_id(postid, userid)
-    Like.select('id').where(post_id: postid, user_id: userid).first&.id
+    # Not used anywhere so hashed out for now.
+    # Like.select('id').where(post_id: postid, user_id: userid).first&.id
   end
 end
