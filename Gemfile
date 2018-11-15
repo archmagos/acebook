@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rack', '>= 2.0.6'
 gem 'rack-cors'
 gem 'rspec'
 gem 'rubocop'

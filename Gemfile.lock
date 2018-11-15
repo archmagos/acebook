@@ -101,7 +101,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-cors (1.0.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -232,6 +232,7 @@ DEPENDENCIES
   pg
   pry
   puma (~> 3.7)
+  rack (>= 2.0.6)
   rack-cors
   rails (~> 5.1.1)
   rails-controller-testing
@@ -248,4 +249,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
